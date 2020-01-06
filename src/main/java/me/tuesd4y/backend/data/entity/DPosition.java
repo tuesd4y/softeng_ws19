@@ -51,6 +51,14 @@ public class DPosition implements Position {
         this.id = id;
     }
 
+    public Long getVehicleIdentification() {
+        if(vehicle != null){
+            return vehicle.getId();
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public double getLatitude() {
         return location.getLatitude();

@@ -5,10 +5,9 @@ window.mapLoaded = false;
 
 const settings = {
     mode: 'all',
-    points: null
+    points: null,
+    vehicle: 'all'
 };
-
-let selectedVehicle = null;
 
 $('.modes>a').on('click', function () {
     $('.modes>a').toggleClass('on').toggleClass('off');
@@ -31,7 +30,7 @@ function displayData() {
     try {
         map.removeLayer('points');
         map.removeSource('points');
-    } catch(err) {
+    } catch (err) {
         // ignored
     }
     map.addLayer({
@@ -56,17 +55,31 @@ function displayData() {
 }
 
 function fetchData() {
-    selectedVehicle = $('#vid').val();
-    if (settings.mode === "all") {
-        $.get("/api/positions/search/findTop1ByVehicleIdOrderByDateTimeDesc?vehicleId=" + selectedVehicle, function (res) {
-            settings.points = [res];
-            displayData()
-        })
+    settings.vehicle = $('#vid').val();
+    if (settings.vehicle === "all") {
+        if (settings.mode === "all") {
+            $.get("/api/positions", function (res) {
+                settings.points = res._embedded.positions;
+                displayData()
+            })
+        } else {
+            $.get("/api/positions/search/findCurrentOfAllVehicles", function (res) {
+                settings.points = res._embedded.positions;
+                displayData()
+            })
+        }
     } else {
-        $.get("/api/positions/search/findAllByVehicleId?vehicleId=" + selectedVehicle, function (res) {
-            settings.points = res._embedded.positions;
-            displayData()
-        })
+        if (settings.mode === "all") {
+            $.get("/api/positions/search/findAllByVehicleId?vehicleId=" + settings.vehicle, function (res) {
+                settings.points = res._embedded.positions;
+                displayData()
+            });
+        } else {
+            $.get("/api/positions/search/findTop1ByVehicleIdOrderByDateTimeDesc?vehicleId=" + settings.vehicle, function (res) {
+                settings.points = [res];
+                displayData()
+            });
+        }
     }
 }
 
@@ -84,4 +97,13 @@ $('#vid').change(function () {
     fetchData()
 });
 
+$.get('/api/vehicles', function (data) {
+    let vehicles = data._embedded.vehicles;
+    $('#vid').empty();
+
+    vehicles.forEach(function (v) {
+        $('#vid').append($('<option value="' + v.id + '">Vehicle ' + v.id + '</option>'));
+    });
+    $('#vid').append($('<option value="all">All Vehicles</option>'));
+});
 
