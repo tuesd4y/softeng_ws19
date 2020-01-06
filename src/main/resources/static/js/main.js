@@ -58,12 +58,12 @@ function displayData() {
 function fetchData() {
     selectedVehicle = $('#vid').val();
     if (settings.mode === "all") {
-        $.get("http://localhost:8080/api/positions/search/findTop1ByVehicleIdOrderByDateTimeDesc?vehicleId=" + selectedVehicle, function (res) {
+        $.get("/api/positions/search/findTop1ByVehicleIdOrderByDateTimeDesc?vehicleId=" + selectedVehicle, function (res) {
             settings.points = [res];
             displayData()
         })
     } else {
-        $.get("http://localhost:8080/api/positions/search/findAllByVehicleId?vehicleId=" + selectedVehicle, function (res) {
+        $.get("/api/positions/search/findAllByVehicleId?vehicleId=" + selectedVehicle, function (res) {
             settings.points = res._embedded.positions;
             displayData()
         })
