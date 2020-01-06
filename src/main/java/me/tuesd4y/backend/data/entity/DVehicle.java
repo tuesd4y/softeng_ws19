@@ -14,9 +14,9 @@ public class DVehicle implements Vehicle {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany
+    @OneToMany(mappedBy = "vehicle")
     private List<DRental> rentals;
-    @OneToMany
+    @OneToMany(mappedBy = "vehicle")
     private List<DMaintenance> maintenances;
     @OneToMany(mappedBy = "vehicle")
     private List<DPosition> positions;

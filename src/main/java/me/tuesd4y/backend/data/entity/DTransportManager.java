@@ -2,16 +2,16 @@ package me.tuesd4y.backend.data.entity;
 
 import me.tuesd4y.api.entities.TransportManager;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class DTransportManager implements TransportManager {
     private String name;
     private String emailAddress;
     @Embedded private DLocation homeBase;
+    @OneToMany(mappedBy = "redistributor")
+    private List<DRedistributionTask> redistributionTasks;
     @Id @GeneratedValue
     private Long id;
 
