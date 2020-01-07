@@ -8,8 +8,8 @@ import java.time.LocalDateTime
 object Test {
     @JvmStatic
     fun main(args: Array<String>) {
-        FuelManager.instance.basePath = "https://softeng-ws19.herokuapp.com/api/"
-//        FuelManager.instance.basePath = "http://localhost:8080/api/"
+//        FuelManager.instance.basePath = "https://softeng-ws19.herokuapp.com/api/"
+        FuelManager.instance.basePath = "http://localhost:8080/api/"
         FuelManager.instance.baseHeaders = mapOf("Content-Type" to "application/json")
 
         // create new user

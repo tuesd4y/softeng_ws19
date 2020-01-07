@@ -6,11 +6,10 @@ import org.geolatte.geom.G2D;
 import org.geolatte.geom.Geometries;
 import org.geolatte.geom.Point;
 import org.geolatte.geom.crs.CoordinateReferenceSystems;
+import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Embeddable
 public class DLocation implements Location {
@@ -47,7 +46,8 @@ public class DLocation implements Location {
         this.longitude = longitude;
     }
 
-    @HandleBeforeSave
+    @PrePersist
+    @PreUpdate
     public void beforeSave() {
         this.locationPoint = Geometries.mkPoint(new G2D(longitude, latitude), CoordinateReferenceSystems.WGS84);
     }

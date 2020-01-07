@@ -1,6 +1,6 @@
 create extension if not exists POSTGIS;
 
-create table dnormal_user
+create table if not exists dnormal_user
 (
     id bigint not null
         constraint dnormal_user_pkey
@@ -9,14 +9,14 @@ create table dnormal_user
     name varchar(255)
 );
 
-create table droute
+create table if not exists droute
 (
     id bigint not null
         constraint droute_pkey
             primary key
 );
 
-create table droute_locations
+create table if not exists droute_locations
 (
     droute_id bigint not null
         constraint fkkda4rs63hmxqa7dwn7a8537ry
@@ -28,7 +28,7 @@ create table droute_locations
 
 alter table droute_locations owner to dev;
 
-create table dtransport_manager
+create table if not exists dtransport_manager
 (
     id bigint not null
         constraint dtransport_manager_pkey
@@ -40,7 +40,7 @@ create table dtransport_manager
     name varchar(255)
 );
 
-create table dvehicle
+create table if not exists dvehicle
 (
     id bigint not null
         constraint dvehicle_pkey
@@ -48,7 +48,7 @@ create table dvehicle
     type varchar(255)
 );
 
-create table dmaintenance
+create table if not exists dmaintenance
 (
     id bigint not null
         constraint dmaintenance_pkey
@@ -61,7 +61,7 @@ create table dmaintenance
             references dvehicle
 );
 
-create table dposition
+create table if not exists dposition
 (
     id bigint not null
         constraint dposition_pkey
@@ -75,7 +75,7 @@ create table dposition
             references dvehicle
 );
 
-create table dredistribution_task
+create table if not exists dredistribution_task
 (
     id bigint not null
         constraint dredistribution_task_pkey
@@ -89,7 +89,7 @@ create table dredistribution_task
             references dvehicle
 );
 
-create table drental
+create table if not exists drental
 (
     id bigint not null
         constraint drental_pkey
@@ -104,7 +104,7 @@ create table drental
             references dvehicle
 );
 
-create table dvehicle_rentals
+create table if not exists dvehicle_rentals
 (
     dvehicle_id bigint not null
         constraint fk378urmnahcd6060ssy92m6qdv

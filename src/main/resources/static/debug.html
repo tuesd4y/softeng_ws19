@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="/css/normalize.css"/>
+    <link rel="stylesheet" href="/css/skeleton.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <form action="#" class="six columns">
+            <div class="row">
+                <h1>Create User</h1>
+                <label for="user-name">User Name</label><input type="text" class="u-full-width" id="user-name">
+                <label for="user-email">User Email</label><input type="email" class="u-full-width" id="user-email">
+            </div>
+            <input type="submit" id="create-user" value="Create User" class="button-primary">
+        </form>
+        <form action="#" class="six columns">
+            <h1>Create Vehicle</h1>
+            <label for="v-type">Vehicle Name</label><input class="u-full-width" type="text" id="v-type">
+            <input type="submit" class="button-primary" value="Create Vehicle" id="create-vehicle">
+        </form>
+    </div>
+    <div class="row">
+        <form action="#" class="six columns">
+            <h1>Create new Rental</h1>
+            <label for="newrental-vid">Vehicle</label>
+            <select id="newrental-vid" class="u-full-width"></select>
+            <label for="newrental-uid">User</label>
+            <select id="newrental-uid" class="u-full-width"></select>
+            <input id="newrental" type="submit" value="Create" class="button-primary">
+        </form>
+        <form action="#" class="six columns">
+            <h1>Return a vehicle</h1>
+            <label for="return-rid">Rental Id</label>
+            <select id="return-rid" class="u-full-width"></select>
+            <input id="return" type="submit" value="Return" class="button-primary">
+        </form>
+    </div>
+    <div class="row">
+        <form>
+            <h1>Fake trip</h1>
+            <label for="fake-stepdistance">Step distance in meters</label>
+            <input id="fake-stepdistance" type="number">
+            <label for="fake-vid">Vehicle</label>
+            <select id="fake-vid"></select>
+            <label for="fake-geojson">Message</label>
+            <textarea class="u-full-width" placeholder="{}" id="fake-geojson"></textarea>
+            <input id="faketrip" type="submit" value="Start faking" class="button-primary">
+        </form>
+    </div>
+</div>
+<script src="/js/debug.js"></script>
+</body>
+</html>

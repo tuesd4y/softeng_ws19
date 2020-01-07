@@ -1,6 +1,8 @@
 package me.tuesd4y.backend.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import me.tuesd4y.api.entities.Rental;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ public class DRental implements Rental  {
     private DNormalUser renter;
     @ManyToOne
     private DVehicle vehicle;
-    private LocalDateTime startTime;
+    private LocalDateTime startTime = LocalDateTime.now();
     private LocalDateTime endTime;
     @Id @GeneratedValue
     private Long id;

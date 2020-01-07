@@ -1,6 +1,10 @@
 package me.tuesd4y.backend.data.entity;
 
 import me.tuesd4y.api.entities.Position;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Geometries;
+import org.geolatte.geom.crs.CoordinateReferenceSystems;
+import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 
 import javax.persistence.*;
@@ -8,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 public class DPosition implements Position {
-    @ManyToOne private DVehicle vehicle;
+    @ManyToOne(fetch = FetchType.EAGER) private DVehicle vehicle;
     @Embedded private DLocation location;
     private LocalDateTime dateTime;
     @Id @GeneratedValue Long id;
