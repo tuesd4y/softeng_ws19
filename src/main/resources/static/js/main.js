@@ -107,3 +107,5 @@ $.get('/api/vehicles', function (data) {
     $('#vid').append($('<option value="all">All Vehicles</option>'));
 });
 
+setInterval(fetchData, 5000);
+

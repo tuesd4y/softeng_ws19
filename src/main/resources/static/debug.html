@@ -6,6 +6,9 @@
     <title>Test</title>
     <link rel="stylesheet" href="/css/normalize.css"/>
     <link rel="stylesheet" href="/css/skeleton.css"/>
+    <script src='https://npmcdn.com/@turf/turf/turf.js'></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
 </head>
 <body>
 <div class="container">
@@ -41,18 +44,27 @@
         </form>
     </div>
     <div class="row">
-        <form>
+        <form action="#this" id="this" class="six columns">
             <h1>Fake trip</h1>
             <label for="fake-stepdistance">Step distance in meters</label>
-            <input id="fake-stepdistance" type="number">
+            <input id="fake-stepdistance" type="number" value="50">
+            <label for="fake-waittime">Waiting time</label>
+            <input id="fake-waittime" type="number" value="3">
             <label for="fake-vid">Vehicle</label>
             <select id="fake-vid"></select>
-            <label for="fake-geojson">Message</label>
+            <label for="fake-geojson">Geojson Path</label>
+            <input type="button" class="button" id="gk-l" value="Load GK - L">
+            <input type="button" class="button" id="st-l" value="Load St - L">
+            <input type="button" class="button" id="p-l" value="Load P - L">
             <textarea class="u-full-width" placeholder="{}" id="fake-geojson"></textarea>
             <input id="faketrip" type="submit" value="Start faking" class="button-primary">
+            <input id="display" type="button" value="Display in map" class="button">
+            <label style="color: lightgrey" id="fake-info"></label>
+            <label style="color: lightgrey" id="fake-info2"></label>
         </form>
+        <div id="map" style="height: 500px; border-radius: 5px; border-color: lightgrey; border-width: 1px" class="six columns"></div>
     </div>
 </div>
-<script src="/js/debug.js"></script>
+<script src="js/debug.js"></script>
 </body>
 </html>
