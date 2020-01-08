@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidHVlc2Q0eSIsImEiOiJjazI1YWVwbmYyYjM0M25tdnRiO
 
 // fetch necessary data
 
-data = {
+let data = {
     vehicles: [],
     users: [],
     rentals: [],
@@ -14,7 +14,7 @@ let fakeVid = 0;
 let fakeWaitingTime = 0;
 let fakeInterval;
 
-const actions = {
+let actions = {
     vehicles: () => {
         document.querySelectorAll('#newrental-vid,#fake-vid').forEach(el => el.innerHTML = '');
         data.vehicles.forEach(v => {
@@ -116,8 +116,8 @@ function handler() {
         document.getElementById('fake-info2').innerText = 'Posting chunk ' + (fakeIndex + 1);
         postData('/api/positions/', {
             "location": {
-                "latitude": fakePoints[fakeIndex][0],
-                "longitude": fakePoints[fakeIndex][1]
+                "latitude": fakePoints[fakeIndex][1],
+                "longitude": fakePoints[fakeIndex][0]
             },
             "dateTime": new Date().toISOString().split('Z')[0],
             "vehicle": '/api/vehicles/' + fakeVid

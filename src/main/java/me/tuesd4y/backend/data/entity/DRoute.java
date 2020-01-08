@@ -26,6 +26,13 @@ public class DRoute implements Route {
     public DRoute() {
     }
 
+    public Long getUserIdentification() {
+        if(user != null) {
+            return user.getId();
+        }
+        return null;
+    }
+
     @Override
     public Long getId() {
         return id;
