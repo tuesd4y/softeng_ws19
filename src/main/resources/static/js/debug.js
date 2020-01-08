@@ -116,8 +116,8 @@ function handler() {
         document.getElementById('fake-info2').innerText = 'Posting chunk ' + (fakeIndex + 1);
         postData('/api/positions/', {
             "location": {
-                "latitude": fakePoints[fakeIndex][1],
-                "longitude": fakePoints[fakeIndex][0]
+                "latitude": fakePoints[fakeIndex][0],
+                "longitude": fakePoints[fakeIndex][1]
             },
             "dateTime": new Date().toISOString().split('Z')[0],
             "vehicle": '/api/vehicles/' + fakeVid
