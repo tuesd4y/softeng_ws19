@@ -5,7 +5,9 @@ import me.tuesd4y.backend.data.entity.DLocation;
 import java.util.List;
 
 public interface Route {
-    List<DLocation> getLocations();
+    Object getRoute();
+
+    User getUser();
 
     Long getId();
 }

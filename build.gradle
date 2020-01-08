@@ -57,6 +57,8 @@ dependencies {
     implementation('org.postgresql:postgresql')
     implementation("org.hibernate:hibernate-spatial")
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.10.0.pr1'
+    implementation("com.vladmihalcea:hibernate-types-52:2.5.0")
+
     implementation('org.apache.tomcat.embed:tomcat-embed-jasper')
 
     implementation("org.springframework.boot:spring-boot-devtools")

@@ -1,16 +1,18 @@
 package me.tuesd4y.backend.data.entity;
 
+import me.tuesd4y.api.entities.Route;
 import me.tuesd4y.api.entities.User;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class DNormalUser implements User {
     @Id @GeneratedValue private Long id;
     private String name;
     private String emailAddress;
+    @OneToMany(mappedBy = "user")
+    List<DRoute> routes;
 
     @Override
     public Long getId() {
