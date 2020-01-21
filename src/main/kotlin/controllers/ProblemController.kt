@@ -23,7 +23,7 @@ class ProblemController(val vehicleRepository: VehicleRepository,
     fun createProblem(@RequestBody problem: Problem): ResponseEntity<String> {
         val vehicle: Optional<DVehicle> = vehicleRepository.findById(problem.vehicleId)
         // vehicle not found
-        if((vehicle as Optional<DVehicle>).isEmpty) {
+        if(!vehicle.isPresent()) {
             return ResponseEntity.notFound().build()
         }
 
