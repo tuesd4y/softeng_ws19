@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.introspect.AnnotatedMethod
 import com.fasterxml.jackson.databind.introspect.AnnotatedParameter
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module
-import com.sun.media.sound.DLSSampleLoop
 import me.tuesd4y.backend.data.entity.DLocation
 import org.geolatte.geom.Point
 import org.springframework.beans.factory.annotation.Autowired

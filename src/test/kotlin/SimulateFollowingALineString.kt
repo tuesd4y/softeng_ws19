@@ -5,23 +5,25 @@ import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.fuel.json.responseJson
 import java.time.LocalDateTime
 
-object Test {
+object SimulateFollowingALineString {
     @JvmStatic
     fun main(args: Array<String>) {
-//        FuelManager.instance.basePath = "https://softeng-ws19.herokuapp.com/api/"
-        FuelManager.instance.basePath = "http://localhost:8080/api/"
+        FuelManager.instance.basePath = "https://softeng-ws19.herokuapp.com/api/"
+//        FuelManager.instance.basePath = "http://localhost:8080/api/"
         FuelManager.instance.baseHeaders = mapOf("Content-Type" to "application/json")
 
         // create new user
-        "users".httpPost()
-            .jsonBody(
-                """
-                {
-                    "name": "Markus",
-                    "emailAddress": "baum@mail.com"
-                }
-            """.trimIndent()
-            )
+        println(
+            "users".httpPost()
+                .jsonBody(
+                    """
+                        {
+                            "name": "Markus",
+                            "emailAddress": "baum@mail.com"
+                        }
+                    """.trimIndent()
+                ).responseJson()
+        )
 
         // create first vehicle
         val vehicleLink = "vehicles".httpPost()
@@ -54,8 +56,8 @@ object Test {
         """
             {
                 "location": {
-                    "latitude": $x,
-                    "longitude": $y
+                    "latitude": $y,
+                    "longitude": $x
                 },
                 "dateTime": "$dateTime",
                 "vehicle": "$vehicleLink"

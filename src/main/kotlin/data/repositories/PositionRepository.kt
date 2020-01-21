@@ -12,8 +12,8 @@ interface PositionRepository : CrudRepository<DPosition, Long> {
 
     fun findTop1ByVehicleIdOrderByDateTimeDesc(@Param("vehicleId") vehicleId: Long): DPosition
 
-    @Query("select (select p from dposition p where p.vehicle_id = v.id order by p.date_time desc limit 1).* " +
-            "from dvehicle v",
+    @Query("select * from (select (select p from dposition p where p.vehicle_id = v.id order by p.date_time desc limit 1).*" +
+            " from dvehicle v) x where x is not null",
         nativeQuery = true)
     fun findCurrentOfAllVehicles(): List<DPosition>
 
