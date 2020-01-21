@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import java.util.*
+import javax.swing.text.html.Option
 
 @BasePathAwareController
 @RequestMapping("problems")
@@ -22,7 +23,7 @@ class ProblemController(val vehicleRepository: VehicleRepository,
     fun createProblem(@RequestBody problem: Problem): ResponseEntity<String> {
         val vehicle: Optional<DVehicle> = vehicleRepository.findById(problem.vehicleId)
         // vehicle not found
-        if(vehicle.isEmpty) {
+        if((vehicle as Optional<DVehicle>).isEmpty) {
             return ResponseEntity.notFound().build()
         }
 
