@@ -19,7 +19,7 @@ class ProblemController(val vehicleRepository: VehicleRepository,
     fun createProblem(@RequestBody problem: Problem): ResponseEntity<String> {
         val vehicle = vehicleRepository.findById(problem.vehicleId)
         // vehicle not found
-        if(vehicle.isEmpty) {
+        if(vehicle.isEmpty()) {
             return ResponseEntity.notFound().build()
         }
 
